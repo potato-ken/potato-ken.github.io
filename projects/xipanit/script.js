@@ -22,7 +22,7 @@ async function gradeTranslation() {
 
         const data = await response.json();
         // responseDiv.textContent = `You scored ${data.score}/100. ${data.feedback}`;
-        responseDiv.textContent = `Hello world`;
+        responseDiv.textContent = "Hello world";
         responseDiv.style.backgroundColor = '#e6ffe6';
     } catch (error) {
         responseDiv.textContent = `Error: ${error.message}`;
