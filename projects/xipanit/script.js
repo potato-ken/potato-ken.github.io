@@ -21,6 +21,9 @@ async function gradeTranslation() {
         });
 
         const data = await response.json();
+        console.log("Raw data: ", data);
+        console.log(`${data.score}`);
+        console.log(`${data.feedback}`);
         // responseDiv.textContent = `You scored ${data.score}/100. ${data.feedback}`;
         responseDiv.textContent = `${data.score}`;
         responseDiv.style.backgroundColor = '#e6ffe6';
