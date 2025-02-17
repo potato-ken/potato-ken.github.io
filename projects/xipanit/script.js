@@ -1,4 +1,5 @@
 async function gradeTranslation() {
+    console.log("Running gradeTranslation version 021725_1731");
     console.log("Submit button clicked!");
     const targetSeg = document.getElementById('targetSeg').value;
     const responseDiv = document.getElementById('response');
