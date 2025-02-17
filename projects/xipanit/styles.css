@@ -16,6 +16,9 @@ body {
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     width: 90%;
     max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .source-text {
@@ -24,7 +27,7 @@ body {
     border-radius: 4px;
     padding: 15px;
     margin-bottom: 20px;
-    width: 100%;
+    width: 60%;
 }
 
 .source-text h3 {
@@ -40,7 +43,7 @@ body {
 }
 
 textarea {
-    width: 100%;
+    width: 60%;
     height: 150px;
     margin-bottom: 15px;
     padding: 10px;
