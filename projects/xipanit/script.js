@@ -1,10 +1,10 @@
 async function gradeTranslation() {
+    console.log("Submit button clicked!");
     const targetSeg = document.getElementById('targetSeg').value;
     const responseDiv = document.getElementById('response');
     
-    // Replace with your actual API endpoint
-    const API_URL = 'https://qtesp091j5.execute-api.us-east-2.amazonaws.com/Prod/grade-translation';
-    
+    console.log("Sending request to API Gateway");
+    const API_URL = 'https://qtesp091j5.execute-api.us-east-2.amazonaws.com/Prod/grade-translation';    
     try {
         const response = await fetch(API_URL, {
             method: 'POST',
