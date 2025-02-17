@@ -26,8 +26,7 @@ body {
     border: 1px solid #dee2e6;
     border-radius: 4px;
     padding: 15px;
-    margin-bottom: 20px;
-    width: 60%;
+    width: 100%;
 }
 
 .source-text h3 {
@@ -43,7 +42,7 @@ body {
 }
 
 textarea {
-    width: 60%;
+    width: 100%;
     height: 150px;
     margin-bottom: 15px;
     padding: 10px;
