@@ -21,7 +21,7 @@ async function gradeTranslation() {
         });
 
         const data = await response.json();
-        responseDiv.textContent = `Success: ${JSON.stringify(data)}`;
+        responseDiv.textContent = `You scored ${data.score}/100. ${data.feedback}`;
         responseDiv.style.backgroundColor = '#e6ffe6';
     } catch (error) {
         responseDiv.textContent = `Error: ${error.message}`;
