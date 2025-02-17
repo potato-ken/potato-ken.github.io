@@ -18,6 +18,27 @@ body {
     max-width: 500px;
 }
 
+.source-text {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    padding: 15px;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.source-text h3 {
+    margin-top: 0;
+    color: #2c3e50;
+    font-size: 1.2em;
+}
+
+.source-text p {
+    margin: 10px 0 0 0;
+    color: #4a4a4a;
+    line-height: 1.6;
+}
+
 textarea {
     width: 100%;
     height: 150px;
