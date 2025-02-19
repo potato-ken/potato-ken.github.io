@@ -1,7 +1,40 @@
+document.addEventListener('DOMContentLoaded', function() {
+    
+    // // LOGIC FOR WHEN ORIGINAL LANGUAGE IS CHANGED
+    // // Event listeners to update text when the dropdowns change
+    // sourceLangSelect.addEventListener('change', updateTranslationText);
+    // targetLangSelect.addEventListener('change', updateTranslationText);
+
+    // LOGIC FOR GRADING TRANSLATION WHEN SUBMIT BUTTON IS CLICKED
+    const submitButton = document.getElementById('submitButton');
+
+    if (submitButton) {
+        submitButton.addEventListener('click', async function () {
+            await gradeTranslation();
+        });
+    }
+});
+
+// Function to update the heading text when language is changed
+function updateOriginalText() {
+    const sourceLangSelect = document.getElementById('sourceLang');
+    const targetLangSelect = document.getElementById('targetLang');
+
+    const sourceLang = sourceLangSelect.options[sourceLangSelect.selectedIndex].text;
+    const targetLang = targetLangSelect.options[targetLangSelect.selectedIndex].text;
+    heading.innerHTML = `Can you translate it from <strong>${sourceLang}</strong> to <strong>${targetLang}</strong>?`;
+}
+
+// Function to submit translated text and return the grading
 async function gradeTranslation() {
     console.log("Running gradeTranslation version 021725_1731");
     console.log("Submit button clicked!");
+    const sourceLangSelect = document.getElementById('sourceLang');
+    const targetLangSelect = document.getElementById('targetLang');
+    const sourceLang = sourceLangSelect.options[sourceLangSelect.selectedIndex].text;
+    const targetLang = targetLangSelect.options[targetLangSelect.selectedIndex].text;
     const targetSeg = document.getElementById('targetSeg').value;
+    const sourceSeg = document.getElementById('sourceSeg').textContent;
     const responseDiv = document.getElementById('response');
     
     console.log("Sending request to API Gateway");
@@ -14,9 +47,9 @@ async function gradeTranslation() {
             },
             body: JSON.stringify({
                 user_email: "test@email.com",
-                source_lang: "English",
-                target_lang: "Spanish",
-                source_seg: "And don’t forget carneval. Hugo’s son let go of the balloon he was holding in his hand. And when I took the first step to try and catch it, a motorbike ran over my foot. I haven’t been able to walk properly for months.",
+                source_lang: sourceLang,
+                target_lang: targetLang,
+                source_seg: sourceSeg,
                 target_seg: targetSeg
             })
         });

@@ -9,11 +9,25 @@
 <body>
     <div class="container">
         <div class="source-text">
-            <h3>Translate this text:</h3>
-            <p>And don’t forget carneval. Hugo’s son let go of the balloon he was holding in his hand. And when I took the first step to try and catch it, a motorbike ran over my foot. I haven’t been able to walk properly for months.</p>
+            <h3>Can you translate it from 
+                <select id="sourceLang">
+                    <option value="en" selected>English</option>
+                    <!-- Add more options as needed -->
+                </select> 
+                to 
+                <select id="targetLang">
+                    <option value="es" selected>Spanish</option>
+                    <option value="vn">Vietnamese</option>
+                    <option value="id">Bahasa Indonesia</option>
+                    <option value="hi">Hindi</option>
+                    <option value="zh">Mandarin</option>
+                    <!-- Add more options as needed -->
+                </select>?
+            </h3>
+            <p id="sourceSeg">And don’t forget carneval. Hugo’s son let go of the balloon he was holding in his hand. And when I took the first step to try and catch it, a motorbike ran over my foot. I haven’t been able to walk properly for months.</p>
         </div>
         <textarea id="targetSeg" placeholder="Enter your text here..."></textarea>
-        <button onclick="gradeTranslation()">Submit</button>
+        <button id="submitButton">Submit</button>
         <div id="response"></div>
     </div>
     <script src="script.js"></script>
