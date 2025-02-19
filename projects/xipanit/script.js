@@ -15,6 +15,42 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+// Function to grab daily text
+async function grabDailyText() {
+    console.log("Running grabDailyText version 021925_1638");
+    console.log("Grabbing daily text");
+    const sourceText = document.getElementById("sourceSeg")
+    const currentDate = new Date().toLocaleDateString("en-CA", { // Get California timezone date in YYYY-MM-DD format
+        timeZone: "America/Los_Angeles",
+        year: "numeric", 
+        month: "2-digit", 
+        day: "2-digit"
+    });
+    
+    console.log("Sending request to API Gateway, grab-daily-text endpoint");
+    const API_URL = 'https://qtesp091j5.execute-api.us-east-2.amazonaws.com/Prod/grab-daily-text';    
+    try {
+        const response = await fetch(API_URL, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                current_date: currentDate
+            })
+        });
+
+        const data = await response.json();
+        console.log("API response:", data);
+        
+        sourceText.textContent = data.text; //Set sourceSeg text to API response
+        sourceText.style.backgroundColor = '#e6ffe6';
+    } catch (error) {
+        sourceText.textContent = `Error: ${error.message}`;
+        sourceText.style.backgroundColor = '#ffe6e6';
+    }
+}
+
 // Function to update the heading text when language is changed
 function updateOriginalText() {
     const sourceLangSelect = document.getElementById('sourceLang');
@@ -37,7 +73,7 @@ async function gradeTranslation() {
     const sourceSeg = document.getElementById('sourceSeg').textContent;
     const responseDiv = document.getElementById('response');
     
-    console.log("Sending request to API Gateway");
+    console.log("Sending request to API Gateway, grade-translation endpoint");
     const API_URL = 'https://qtesp091j5.execute-api.us-east-2.amazonaws.com/Prod/grade-translation';    
     try {
         const response = await fetch(API_URL, {
