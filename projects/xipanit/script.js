@@ -18,9 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 const post_call_headers = {
-    "Content-Type": "application/json",
-    "Access-Control-Allow-Origin": "https://potato-ken.github.io",
-    "Access-Control-Allow-Headers": "Content-Type, Access-Control-Allow-Origin"
+    "Content-Type": "application/json"
 }
 
 // Function to grab daily text
