@@ -24,7 +24,7 @@ const post_call_headers = {
 
 // Function to grab daily text
 async function grabDailyText() {
-    console.log("Running grabDailyText version 022025_0412");
+    console.log("Running grabDailyText version 022025_0418");
     console.log("Grabbing daily text");
     const sourceText = document.getElementById("sourceSeg")
     const currentDate = new Date().toLocaleDateString("en-CA", { // Get California timezone date in YYYY-MM-DD format
@@ -69,7 +69,7 @@ function updateOriginalText() {
 
 // Function to submit translated text and return the grading
 async function gradeTranslation() {
-    console.log("Running gradeTranslation version 022025_0412");
+    console.log("Running gradeTranslation version 022025_0418");
     console.log("Submit button clicked!");
     const sourceLangSelect = document.getElementById('sourceLang');
     const targetLangSelect = document.getElementById('targetLang');
