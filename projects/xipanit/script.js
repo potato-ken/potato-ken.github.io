@@ -18,8 +18,8 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 const post_call_headers = {
-    "Content-Type": "application/json",
-    "Access-Control-Allow-Headers": "Content-Type", // Allowed headers
+    "Content-Type": "application/json"
+    // "Access-Control-Allow-Headers": "Content-Type", // Allowed headers
 }
 
 // Function to grab daily text
