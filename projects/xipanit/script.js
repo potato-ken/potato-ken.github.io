@@ -1,5 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     
+    // LOGIC TO LOAD DAILY TEXT
+    grabDailyText();
     // // LOGIC FOR WHEN ORIGINAL LANGUAGE IS CHANGED
     // // Event listeners to update text when the dropdowns change
     // sourceLangSelect.addEventListener('change', updateTranslationText);
