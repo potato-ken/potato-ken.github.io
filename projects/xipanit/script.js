@@ -17,9 +17,16 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+const post_call_headers = {
+    "Content-Type": "application/json",
+    "Access-Control-Allow-Origin": "*", // Allow requests from all origins
+    "Access-Control-Allow-Methods": "POST, OPTIONS", // Allowed methods
+    "Access-Control-Allow-Headers": "Content-Type", // Allowed headers
+}
+
 // Function to grab daily text
 async function grabDailyText() {
-    console.log("Running grabDailyText version 021925_1638");
+    console.log("Running grabDailyText version 022025_0412");
     console.log("Grabbing daily text");
     const sourceText = document.getElementById("sourceSeg")
     const currentDate = new Date().toLocaleDateString("en-CA", { // Get California timezone date in YYYY-MM-DD format
@@ -34,12 +41,11 @@ async function grabDailyText() {
     try {
         const response = await fetch(API_URL, {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
+            headers: post_call_headers,
             body: JSON.stringify({
                 current_date: currentDate
-            })
+            }),
+            mode: 'cors'
         });
 
         const data = await response.json();
@@ -65,7 +71,7 @@ function updateOriginalText() {
 
 // Function to submit translated text and return the grading
 async function gradeTranslation() {
-    console.log("Running gradeTranslation version 021725_1731");
+    console.log("Running gradeTranslation version 022025_0412");
     console.log("Submit button clicked!");
     const sourceLangSelect = document.getElementById('sourceLang');
     const targetLangSelect = document.getElementById('targetLang');
@@ -80,16 +86,15 @@ async function gradeTranslation() {
     try {
         const response = await fetch(API_URL, {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
+            headers: post_call_headers,
             body: JSON.stringify({
                 user_email: "test@email.com",
                 source_lang: sourceLang,
                 target_lang: targetLang,
                 source_seg: sourceSeg,
                 target_seg: targetSeg
-            })
+            }),
+            mode: 'cors'
         });
 
         const data = await response.json();
