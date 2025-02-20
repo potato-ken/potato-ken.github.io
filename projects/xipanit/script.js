@@ -23,7 +23,7 @@ const post_call_headers = {
 
 // Function to grab daily text
 async function grabDailyText() {
-    console.log("Running grabDailyText version 022025_1303");
+    console.log("Running grabDailyText version 022025_1504");
     console.log("Grabbing daily text");
     const sourceText = document.getElementById("sourceSeg")
     const currentDate = new Date().toLocaleDateString("en-CA", { // Get California timezone date in YYYY-MM-DD format
@@ -40,7 +40,8 @@ async function grabDailyText() {
             method: 'POST',
             headers: post_call_headers,
             body: JSON.stringify({
-                date: currentDate
+                date: currentDate,
+                random_flag: "true"
             }),
             mode: 'cors'
         });
