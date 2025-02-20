@@ -19,8 +19,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 const post_call_headers = {
     "Content-Type": "application/json",
-    "Access-Control-Allow-Origin": "*", // Allow requests from all origins
-    "Access-Control-Allow-Methods": "POST, OPTIONS", // Allowed methods
     "Access-Control-Allow-Headers": "Content-Type", // Allowed headers
 }
 
