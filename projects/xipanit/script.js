@@ -19,12 +19,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
 const post_call_headers = {
     "Content-Type": "application/json",
-    "Access-Control-Allow-Origin": "https://potato-ken.github.io"
+    "Access-Control-Allow-Origin": "https://potato-ken.github.io",
+    "Access-Control-Allow-Headers": "Content-Type, Access-Control-Allow-Origin"
 }
 
 // Function to grab daily text
 async function grabDailyText() {
-    console.log("Running grabDailyText version 022025_0507");
+    console.log("Running grabDailyText version 022025_0516");
     console.log("Grabbing daily text");
     const sourceText = document.getElementById("sourceSeg")
     const currentDate = new Date().toLocaleDateString("en-CA", { // Get California timezone date in YYYY-MM-DD format
@@ -69,7 +70,7 @@ function updateOriginalText() {
 
 // Function to submit translated text and return the grading
 async function gradeTranslation() {
-    console.log("Running gradeTranslation version 022025_0507");
+    console.log("Running gradeTranslation version 022025_0516");
     console.log("Submit button clicked!");
     const sourceLangSelect = document.getElementById('sourceLang');
     const targetLangSelect = document.getElementById('targetLang');
