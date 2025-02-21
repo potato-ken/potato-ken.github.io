@@ -97,7 +97,7 @@ async function gradeTranslation() {
 
         const data = await response.json();
         console.log("API response:", data);
-        responseDiv.textContent = `You scored ${data.score}/100. ${data.feedback}. The correct translation would've been <strong>${data.correct_translation}</strong>`;
+        responseDiv.innerHTML = `You scored ${data.score}/100. ${data.feedback}. The correct translation would've been <strong>${data.correct_translation}</strong>`;
         responseDiv.style.backgroundColor = '#e6ffe6';
     } catch (error) {
         responseDiv.textContent = `Error: ${error.message}`;
