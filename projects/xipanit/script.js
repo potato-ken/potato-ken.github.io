@@ -69,7 +69,7 @@ function updateOriginalText() {
 
 // Function to submit translated text and return the grading
 async function gradeTranslation() {
-    console.log("Running gradeTranslation version 022025_1303");
+    console.log("Running gradeTranslation version 022125_1735");
     console.log("Submit button clicked!");
     const sourceLangSelect = document.getElementById('sourceLang');
     const targetLangSelect = document.getElementById('targetLang');
@@ -97,7 +97,7 @@ async function gradeTranslation() {
 
         const data = await response.json();
         console.log("API response:", data);
-        responseDiv.textContent = `You scored ${data.score}/100. ${data.feedback}`;
+        responseDiv.textContent = `You scored ${data.score}/100. ${data.feedback}. The correct translation would've been ${data.correct_translation}`;
         responseDiv.style.backgroundColor = '#e6ffe6';
     } catch (error) {
         responseDiv.textContent = `Error: ${error.message}`;
