@@ -51,11 +51,9 @@ async function grabDailyText() {
         
         sourceText.textContent = data.text; //Set sourceSeg text to API response
         sourceText.style.backgroundColor = '#e6ffe6';
-        return data.text;
     } catch (error) {
         sourceText.textContent = `Error: ${error.message}`;
         sourceText.style.backgroundColor = '#ffe6e6';
-        return null;
     }
 }
 
