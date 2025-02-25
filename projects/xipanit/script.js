@@ -101,15 +101,18 @@ async function generateHints() {
 
 // Function to process source text and wrap hint words
 function processText(wordData) {
+    console.log("Processing text after receiving hints data:", wordData);
     const paragraph = document.getElementById('sourceSeg');
     let text = paragraph.innerHTML;
 
+    console.log("Retrieved original text:", text);
     // Wrap target words in spans with data attributes
     wordData.forEach(wordInfo => {
         const regex = new RegExp(`\\b${wordInfo.word}\\b`, 'g');
         text = text.replace(regex, `<span class="word" data-difficulty="${wordInfo.difficulty}" data-translation="${wordInfo.translation}">${wordInfo.word}</span>`);
     });
 
+    console.log("Processed text:", text);
     paragraph.innerHTML = text;
 }
 
@@ -123,7 +126,9 @@ function highlightWords(level) {
 // Handle hint button clicks
 // Need to handlw spam clicking??
 document.getElementById('hintButton').addEventListener('click', () => {
+    console.log("Hint button clicked, current level is ", currentHintLevel + 1);
     if (currentHintLevel === 0) {
+        console.log("First hint click, generating hint then processing text, then highlighting first level of hints");
         generateHints()
         .then(wordData => {
             processText(wordData); // Process the text with the generated wordData
@@ -135,9 +140,10 @@ document.getElementById('hintButton').addEventListener('click', () => {
         });
 
     } else if (currentHintLevel === 3) {
-        console.log("Hints have been used up")
+        console.log("Hints have been used up, no action");
         return;
     } else {
+        console.log("Hint clicked again, highlighting next level of hints");
         currentHintLevel ++;
         highlightWords(currentHintLevel); // Highlight words of the current level
     }
@@ -146,6 +152,7 @@ document.getElementById('hintButton').addEventListener('click', () => {
 // Handle word clicks
 document.getElementById('sourceSeg').addEventListener('click', (e) => {
     const word = e.target;
+    console.log("Clicked on word ", word);
     if (!word.classList.contains('word')) return;
 
     // Remove existing modal
@@ -153,6 +160,7 @@ document.getElementById('sourceSeg').addEventListener('click', (e) => {
 
     // Create new modal if the clicked word matches the current hint level
     if (word.dataset.difficulty == currentHintLevel) {
+        console.log("Word clicked matches current hint level");
         const modal = document.createElement('div');
         modal.className = 'translation-modal';
         modal.textContent = word.dataset.translation;
