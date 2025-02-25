@@ -70,3 +70,29 @@ button:hover {
     padding: 10px;
     border-radius: 4px;
 }
+
+[data-difficulty="1"].highlight {
+    text-decoration: underline wavy red;
+    background-color: #ff000033;
+}
+
+[data-difficulty="2"].highlight {
+    text-decoration: underline wavy orange;
+    background-color: #ffa50033;
+}
+
+[data-difficulty="3"].highlight {
+    text-decoration: underline wavy yellow;
+    background-color: #ffff0033;
+}
+
+/* Translation modal styling */
+.translation-modal {
+    position: absolute;
+    background: white;
+    border: 1px solid #ccc;
+    padding: 8px;
+    border-radius: 4px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    z-index: 1000;
+}
