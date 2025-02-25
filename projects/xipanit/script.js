@@ -67,6 +67,10 @@ let activeModal = null; // Track the active translation modal
 async function generateHints() {
     console.log("Running generateHints version 022425_0142");
     console.log("Generating hints");
+    
+    const sourceLangSelect = document.getElementById('sourceLang');
+    const targetLangSelect = document.getElementById('targetLang');
+
     const sourceLang = sourceLangSelect.options[sourceLangSelect.selectedIndex].text;
     const targetLang = targetLangSelect.options[targetLangSelect.selectedIndex].text;
     const sourceSeg = document.getElementById('sourceSeg').textContent;
