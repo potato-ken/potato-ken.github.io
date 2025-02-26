@@ -159,8 +159,8 @@ document.getElementById('sourceSeg').addEventListener('click', (e) => {
     if (activeModal) activeModal.remove();
 
     // Create new modal if the clicked word matches the current hint level
-    if (word.dataset.difficulty == currentHintLevel) {
-        console.log("Word clicked matches current hint level");
+    if (word.dataset.difficulty <= currentHintLevel) {
+        console.log("Word clicked's difficulty level is equal to or less than current hint level, showing modal");
         const modal = document.createElement('div');
         modal.className = 'translation-modal';
         modal.textContent = word.dataset.translation;
@@ -169,9 +169,13 @@ document.getElementById('sourceSeg').addEventListener('click', (e) => {
         const rect = word.getBoundingClientRect();
         modal.style.left = `${rect.left}px`;
         modal.style.top = `${rect.bottom + 5}px`;
+        console.log("Element rect:", rect); //[!]
+        console.log(`Positioning modal at left: ${rect.left}, top: ${rect.bottom + 5}`); //[!]
 
         document.body.appendChild(modal);
         activeModal = modal;
+        console.log("Modal appended:", modal); //[!]
+        console.log("Modal position:", modal.style.left, modal.style.top); //[!]
 
         // Close modal on click outside or on the same word
         const clickHandler = (e) => {
@@ -181,6 +185,7 @@ document.getElementById('sourceSeg').addEventListener('click', (e) => {
                 activeModal = null;
             }
         };
+        console.log("Attaching click handler to close modal."); // [!]
         document.addEventListener('click', clickHandler);
     }
 });
