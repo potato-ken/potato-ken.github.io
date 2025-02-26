@@ -180,6 +180,7 @@ document.getElementById('sourceSeg').addEventListener('click', (e) => {
         // Close modal on click outside or on the same word
         const clickHandler = (e) => {
             if (!modal.contains(e.target)) {
+                console.log("Click detected to close modal");
                 modal.remove();
                 document.removeEventListener('click', clickHandler);
                 activeModal = null;
