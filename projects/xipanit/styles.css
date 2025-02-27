@@ -72,17 +72,17 @@ button:hover {
 }
 
 [data-difficulty="1"].highlight {
-    text-decoration: underline wavy red;
+    text-decoration: underline overline red;
     background-color: #ff000033;
 }
 
 [data-difficulty="2"].highlight {
-    text-decoration: underline wavy orange;
+    text-decoration: underline overline orange;
     background-color: #ffa50033;
 }
 
 [data-difficulty="3"].highlight {
-    text-decoration: underline wavy yellow;
+    text-decoration: underline overline yellow;
     background-color: #ffff0033;
 }
 
