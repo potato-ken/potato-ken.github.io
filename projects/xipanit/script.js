@@ -63,7 +63,7 @@ let activeModal = null; // Track the active translation modal
 
 // Function to generate hints
 async function generateHints() {
-    console.log("Running generateHints version 022625_1908");
+    console.log("Running generateHints version 022725_1224");
     console.log("Generating hints");
     
     const sourceLangSelect = document.getElementById('sourceLang');
@@ -199,7 +199,9 @@ document.getElementById('sourceSeg').addEventListener('click', (e) => {
             }
         };
         console.log("Attaching click handler to close modal."); // [!]
-        document.addEventListener('click', clickHandler);
+        setTimeout(() => {
+            document.addEventListener('click', clickHandler);
+        }, 0);
     }
 });
 
