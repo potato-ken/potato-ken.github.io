@@ -63,7 +63,7 @@ let activeModal = null; // Track the active translation modal
 
 // Function to generate hints
 async function generateHints() {
-    console.log("Running generateHints version 022425_0142");
+    console.log("Running generateHints version 022625_1908");
     console.log("Generating hints");
     
     const sourceLangSelect = document.getElementById('sourceLang');
@@ -172,10 +172,22 @@ document.getElementById('sourceSeg').addEventListener('click', (e) => {
         console.log("Element rect:", rect); //[!]
         console.log(`Positioning modal at left: ${rect.left}, top: ${rect.bottom + 5}`); //[!]
 
+        const debugSquare = document.createElement('div');
+        debugSquare.style.position = "absolute";
+        debugSquare.style.left = `${rect.left}px`;
+        debugSquare.style.top = `${rect.bottom + 5}px`;
+        debugSquare.style.width = "20px";
+        debugSquare.style.height = "20px";
+        debugSquare.style.backgroundColor = "red";
+        debugSquare.style.zIndex = "9999";
+        document.body.appendChild(debugSquare);
+        console.log("Debug square added at:", debugSquare.style.left, debugSquare.style.top);
+
         document.body.appendChild(modal);
         activeModal = modal;
         console.log("Modal appended:", modal); //[!]
         console.log("Modal position:", modal.style.left, modal.style.top); //[!]
+        console.log("Modal in document?", document.querySelector('.translation-modal'));
 
         // Close modal on click outside or on the same word
         const clickHandler = (e) => {
