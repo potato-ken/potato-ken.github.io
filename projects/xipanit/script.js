@@ -179,7 +179,7 @@ document.getElementById('sourceSeg').addEventListener('click', (e) => {
         debugSquare.style.width = "20px";
         debugSquare.style.height = "20px";
         debugSquare.style.backgroundColor = "red";
-        debugSquare.style.zIndex = "9999";
+        debugSquare.style.zIndex = "1000";
         document.body.appendChild(debugSquare);
         console.log("Debug square added at:", debugSquare.style.left, debugSquare.style.top);
 
