@@ -94,7 +94,7 @@ let activeModal = null; // Track the active translation modal
 
 // Function to generate hints
 async function generateHints() {
-    console.log("Running generateHints version 022725_0132");
+    console.log("Running generateHints version 022825_1151");
     console.log("Generating hints");
     
     const sourceLangSelect = document.getElementById('sourceLang');
@@ -137,10 +137,22 @@ function processText(wordData) {
     let text = paragraph.innerHTML;
 
     console.log("Retrieved original text:", text);
+
+    // Sort words so we can process longer words first, preventing nested replacements. For example, if there are translation for "out of nowhere" and "nowhere", "out of nowhere" will be processed first and that word will no longer be translated so "nowhere" will not interfere with formatting.
+    wordData.sort((a, b) => b.word.length - a.word.length);
+
     // Wrap target words in spans with data attributes
     wordData.forEach(wordInfo => {
         const regex = new RegExp(`\\b${wordInfo.word}\\b`, 'g');
         text = text.replace(regex, `<span class="word" data-difficulty="${wordInfo.difficulty}" data-translation="${wordInfo.translation}">${wordInfo.word}</span>`);
+    });
+
+    // Loop through each translated word/phrase
+    wordData.forEach(({ word, difficulty, translation }) => {
+        const regex = new RegExp(`(\\b${word}\\b)(?![^<]*>|[^<>]*<\/span>)`, 'g');
+        text = text.replace(regex, (_, match) =>
+            `<span class="word" data-difficulty="${difficulty}" data-translation="${translation}">${match}</span>`
+        );
     });
 
     console.log("Processed text:", text);
