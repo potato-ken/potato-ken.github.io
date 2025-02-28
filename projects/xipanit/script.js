@@ -233,7 +233,6 @@ function updateOriginalText() {
 // Function to submit translated text and return the grading
 async function gradeTranslation() {
     console.log("Running gradeTranslation version 022125_1735");
-    console.log("Submit button clicked!");
     const sourceLangSelect = document.getElementById('sourceLang');
     const targetLangSelect = document.getElementById('targetLang');
     const sourceLang = sourceLangSelect.options[sourceLangSelect.selectedIndex].text;
