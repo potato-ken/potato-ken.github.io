@@ -1,30 +1,59 @@
 document.addEventListener('DOMContentLoaded', function() {
-    
-    // LOGIC TO LOAD DAILY TEXT
-    grabDailyText();
-    // // LOGIC FOR WHEN ORIGINAL LANGUAGE IS CHANGED
-    // // Event listeners to update text when the dropdowns change
-    // sourceLangSelect.addEventListener('change', updateTranslationText);
-    // targetLangSelect.addEventListener('change', updateTranslationText);
+    // Create an immediately invoked async function, this helps us use await
+    (async function() {
+        
+        // LOGIC TO LOAD TEXT
+        const textType = await grabText("false"); // When page loads, grab daily test
 
-    // LOGIC FOR GRADING TRANSLATION WHEN SUBMIT BUTTON IS CLICKED
-    const submitButton = document.getElementById('submitButton');
+        // LOGIC FOR RANDOM BUTTON TO APPEAR DEPENDING ON TEXT LOADED
+        const randomButton = document.getElementById('randomTextButton');
+        
+        // If returned textType is random, then daily has been completed so randomButton can be displayed
+        if (textType === 'random' && randomButton) {
+            randomButton.style.display = 'block';
+        }
+        
+        // randomButton handler
+        if (randomButton) {
+            randomButton.addEventListener('click', async () => {
+                console.log("Random Text button has been clicked");
+                const newTextType = await grabText("true"); // When randomButton is clicked, generate new text
+                // If clicking random button returns daily text, then hide randomButton again
+                if (newTextType === 'daily') {
+                    randomButton.style.display = 'none';
+                }
+            });
+        }
 
-    if (submitButton) {
-        submitButton.addEventListener('click', async function () {
-            await gradeTranslation();
-        });
-    }
+        // LOGIC FOR GRADING TRANSLATION WHEN SUBMIT BUTTON IS CLICKED
+        const submitButton = document.getElementById('submitButton');
+        
+        // submitButton handler
+        if (submitButton) {
+            submitButton.addEventListener('click', async () => {
+                console.log("Submit button has been clicked");
+                try {
+                    await gradeTranslation(); // When submitButton is clicked, grade the translation
+                    // If generated text is daily, then make randomButton appear after the daily has been submitted
+                    if (textType === 'daily') {
+                        randomButton.style.display = 'block';
+                    }
+                } catch (error) {
+                    console.error('Grading error:', error);
+                }
+            });
+        }
+    })();
 });
 
 const post_call_headers = {
     "Content-Type": "application/json"
 }
 
-// Function to grab daily text
-async function grabDailyText() {
-    console.log("Running grabDailyText version 022025_1504");
-    console.log("Grabbing daily text");
+// Function to grab text
+async function grabText(randomFlag) {
+    console.log("Running grabText version 022825_0205");
+    console.log(`Grabbing text, randomFlag is ${randomFlag}`);
     const sourceText = document.getElementById("sourceSeg")
     const currentDate = new Date().toLocaleDateString("en-CA", { // Get California timezone date in YYYY-MM-DD format
         timeZone: "America/Los_Angeles",
@@ -41,7 +70,7 @@ async function grabDailyText() {
             headers: post_call_headers,
             body: JSON.stringify({
                 date: currentDate,
-                random_flag: "true"
+                random_flag: randomFlag
             }),
             mode: 'cors'
         });
@@ -50,9 +79,11 @@ async function grabDailyText() {
         console.log("API response:", data);
         
         sourceText.textContent = data.text; //Set sourceSeg text to API response
+        return data.text_type;
         // sourceText.style.backgroundColor = '#e6ffe6';
     } catch (error) {
         sourceText.textContent = `Error: ${error.message}`;
+        return error;
         // sourceText.style.backgroundColor = '#ffe6e6';
     }
 }
