@@ -1,20 +1,4 @@
-:root {
-  /* Bee positions for iPhone 16 Plus (460x995 logical viewport) */
-  --bee-state0-left: 5vw;   /* Initial: top left */
-  --bee-state0-top: 5vh;
-
-  --bee-state1-left: 75vw;  /* Click 1: middle right */
-  --bee-state1-top: 45vh;
-
-  --bee-state2-left: 10vw;  /* Click 2: bottom left */
-  --bee-state2-top: 80vh;
-
-  --bee-state3-left: 15vw;  /* Click 3: middle left */
-  --bee-state3-top: 45vh;
-
-  --bee-state4-left: 50vw;  /* Click 4: bouquet center */
-  --bee-state4-top: 50vh;
-}
+/* Bee positions now controlled by CONFIG in script.js */
 
 * {
   margin: 0;
@@ -39,58 +23,59 @@ body {
 .bouquet {
   position: absolute;
   left: 50%;
-  top: 50%;
+  top: 70%;
   transform: translate(-50%, -50%);
-  width: 60vw;
-  max-width: 400px;
+  width: 175vw;
+  max-width: 500px;
   pointer-events: none;
   z-index: 1;
 }
 
 .bee {
   position: absolute;
-  width: 12vw;
-  max-width: 80px;
+  width: 25vw;
+  max-width: 160px;
   cursor: pointer;
   z-index: 2;
   transition: none;
 }
 
-/* Bee position states */
-.bee.state-0 {
-  left: var(--bee-state0-left);
-  top: var(--bee-state0-top);
-  transform: translate(-50%, -50%) scaleX(1);
+/* Bee position states - now controlled by JavaScript CONFIG */
+
+.click-me-hint {
+  position: absolute;
+  font-size: 5vw;
+  font-weight: bold;
+  color: #b82626;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  pointer-events: none;
+  z-index: 2;
+  white-space: nowrap;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  animation: pulsate 1.5s ease-in-out infinite;
 }
 
-.bee.state-1 {
-  left: var(--bee-state1-left);
-  top: var(--bee-state1-top);
-  transform: translate(-50%, -50%) scaleX(-1);
+.click-me-hint.hidden {
+  opacity: 0;
+  animation: none;
 }
 
-.bee.state-2 {
-  left: var(--bee-state2-left);
-  top: var(--bee-state2-top);
-  transform: translate(-50%, -50%) scaleX(1);
-}
-
-.bee.state-3 {
-  left: var(--bee-state3-left);
-  top: var(--bee-state3-top);
-  transform: translate(-50%, -50%) scaleX(1);
-}
-
-.bee.state-4 {
-  left: var(--bee-state4-left);
-  top: var(--bee-state4-top);
-  transform: translate(-50%, -50%) scaleX(1);
+@keyframes pulsate {
+  0%, 100% {
+    opacity: 1;
+    transform: translate(0, -50%) scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(0, -50%) scale(1.02);
+  }
 }
 
 .valentine-message {
   position: absolute;
   left: 50%;
-  top: 50%;
+  top: 25%;
   transform: translate(-50%, -50%);
   width: 80vw;
   max-width: 500px;
