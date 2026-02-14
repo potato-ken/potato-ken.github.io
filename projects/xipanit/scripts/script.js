@@ -105,18 +105,10 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
 
-        // Submit button for user input (calls gradeTranslation)
-        // Respond back with output for gradeTranslation
-
         // Handle submit button click
         const sendButton = document.getElementById('sendButton');
         sendButton.addEventListener('click', async () => {
             console.log("Send button clicked");
-
-            // Add user input to chat
-            // Start loading animation for response
-            //  Submit user input to API Gateway, grade-translation endpoint
-            //  Display response in chat
 
             const targetSeg = document.getElementById('targetSeg').value;
             addToChatQueue(targetSeg, 'user', [], 'userInput', false);
@@ -151,10 +143,6 @@ document.addEventListener('DOMContentLoaded', function() {
             this.style.height = 'auto'; // Reset height to auto to calculate the new height
             this.style.height = (this.scrollHeight) + 'px'; // Set the height to the scroll height
         }, false);
-
-
-
-        // Scoring system that subtracts points for every hint used
 
     })();
 });
