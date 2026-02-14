@@ -1,0 +1,135 @@
+:root {
+  /* Bee positions for iPhone 16 Plus (460x995 logical viewport) */
+  --bee-state0-left: 5vw;   /* Initial: top left */
+  --bee-state0-top: 5vh;
+
+  --bee-state1-left: 75vw;  /* Click 1: middle right */
+  --bee-state1-top: 45vh;
+
+  --bee-state2-left: 10vw;  /* Click 2: bottom left */
+  --bee-state2-top: 80vh;
+
+  --bee-state3-left: 15vw;  /* Click 3: middle left */
+  --bee-state3-top: 45vh;
+
+  --bee-state4-left: 50vw;  /* Click 4: bouquet center */
+  --bee-state4-top: 50vh;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: linear-gradient(135deg, #ffc0d9 0%, #ffe6f0 100%);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.bouquet {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 60vw;
+  max-width: 400px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.bee {
+  position: absolute;
+  width: 12vw;
+  max-width: 80px;
+  cursor: pointer;
+  z-index: 2;
+  transition: none;
+}
+
+/* Bee position states */
+.bee.state-0 {
+  left: var(--bee-state0-left);
+  top: var(--bee-state0-top);
+  transform: translate(-50%, -50%);
+}
+
+.bee.state-1 {
+  left: var(--bee-state1-left);
+  top: var(--bee-state1-top);
+  transform: translate(-50%, -50%);
+}
+
+.bee.state-2 {
+  left: var(--bee-state2-left);
+  top: var(--bee-state2-top);
+  transform: translate(-50%, -50%);
+}
+
+.bee.state-3 {
+  left: var(--bee-state3-left);
+  top: var(--bee-state3-top);
+  transform: translate(-50%, -50%);
+}
+
+.bee.state-4 {
+  left: var(--bee-state4-left);
+  top: var(--bee-state4-top);
+  transform: translate(-50%, -50%);
+}
+
+.valentine-text {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.valentine-text p {
+  font-size: 6vw;
+  font-weight: bold;
+  color: #d63384;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  white-space: nowrap;
+}
+
+.valentine-text.show {
+  animation: popIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .valentine-text p {
+    font-size: 8vw;
+  }
+}
+
+@media (max-width: 480px) {
+  .valentine-text p {
+    font-size: 10vw;
+  }
+}
