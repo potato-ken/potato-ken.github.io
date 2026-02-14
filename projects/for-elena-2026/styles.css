@@ -60,31 +60,31 @@ body {
 .bee.state-0 {
   left: var(--bee-state0-left);
   top: var(--bee-state0-top);
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) scaleX(1);
 }
 
 .bee.state-1 {
   left: var(--bee-state1-left);
   top: var(--bee-state1-top);
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) scaleX(-1);
 }
 
 .bee.state-2 {
   left: var(--bee-state2-left);
   top: var(--bee-state2-top);
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) scaleX(1);
 }
 
 .bee.state-3 {
   left: var(--bee-state3-left);
   top: var(--bee-state3-top);
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) scaleX(1);
 }
 
 .bee.state-4 {
   left: var(--bee-state4-left);
   top: var(--bee-state4-top);
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) scaleX(1);
 }
 
 .valentine-text {
