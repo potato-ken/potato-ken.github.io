@@ -87,26 +87,19 @@ body {
   transform: translate(-50%, -50%) scaleX(1);
 }
 
-.valentine-text {
+.valentine-message {
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  text-align: center;
+  width: 80vw;
+  max-width: 500px;
   opacity: 0;
   pointer-events: none;
   z-index: 3;
 }
 
-.valentine-text p {
-  font-size: 6vw;
-  font-weight: bold;
-  color: #d63384;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-  white-space: nowrap;
-}
-
-.valentine-text.show {
+.valentine-message.show {
   animation: popIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 
@@ -123,13 +116,13 @@ body {
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-  .valentine-text p {
-    font-size: 8vw;
+  .valentine-message {
+    width: 85vw;
   }
 }
 
 @media (max-width: 480px) {
-  .valentine-text p {
-    font-size: 10vw;
+  .valentine-message {
+    width: 90vw;
   }
 }
