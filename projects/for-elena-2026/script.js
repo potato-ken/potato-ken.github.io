@@ -11,7 +11,7 @@ const CONFIG = {
 
 let currentState = 0;
 const bee = document.getElementById('bee');
-const valentineText = document.getElementById('valentine-text');
+const valentineMessage = document.getElementById('valentine-message');
 
 // Initialize bee at state 0
 function initializeBee() {
@@ -28,9 +28,9 @@ function setBeePosition(state) {
   bee.classList.add(`state-${state}`);
 }
 
-// Reveal valentine text
-function revealValentineText() {
-  valentineText.classList.add('show');
+// Reveal valentine message image
+function revealValentineMessage() {
+  valentineMessage.classList.add('show');
 }
 
 // Handle bee click
@@ -39,9 +39,9 @@ function handleBeeClick() {
     currentState++;
     setBeePosition(currentState);
 
-    // Reveal text on 4th click
+    // Reveal message image on 4th click
     if (currentState === 4) {
-      setTimeout(revealValentineText, CONFIG.textRevealDelay);
+      setTimeout(revealValentineMessage, CONFIG.textRevealDelay);
     }
   }
 }
